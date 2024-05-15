@@ -1,0 +1,42 @@
+﻿@using Core.Models;
+@model IEnumerable<PresciptionTests>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+<h1>All Prescription Tests</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Patient ID</th>
+            <th>Prescription ID</th>
+            <th>Test ID</th>
+            <th>Test Result</th>
+            <th>Details</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var test in Model)
+        {
+            <tr>
+                <td>@test.Prescription.PatientId</td>
+                <td>@test.prescriptionId</td>
+                <td>@test.TestId</td>
+                <td>@test.TestResult</td>
+                <td>@test.Detailsforresult</td>
+                <td>
+                    <a asp-action="SeedTestResult" asp-controller="Results" asp-route-PresciptionTestId="@test.Id" class="btn btn-primary">Update Result</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

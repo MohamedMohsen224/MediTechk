@@ -1,0 +1,99 @@
+﻿@using AdminPanel.Controllers
+@model RegisterDoctorViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form method="post" enctype="multipart/form-data" asp-action="Create" asp-controller="Doctor" name="doctorForm">
+    <div class="form-group">
+        <label for="UserName">Username:</label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Email">Email:</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Password">Password:</label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Spechailty">Spechailty:</label>
+        <input asp-for="speciality"  class="form-control" />
+        <span asp-validation-for="speciality" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="PhoneNumber">Phone Number:</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Address">Address:</label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="DateOfBirth">Date of Birth:</label>
+        <input asp-for="DateOfBirth" type="date" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="ClinicId">Clinic ID:</label>
+        <input asp-for="ClinicId" type="number" class="form-control" /> 
+        <span asp-validation-for="ClinicId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Gender">Gender:</label>
+        <input asp-for="Gender" type="text" class="form-control" />
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+     <div class="form-group">
+        <label for="HealthyIncureNumber">HealthyIncureNumber:</label>
+        <input asp-for="healthInsuranceNumber" type="number" class="form-control" /> 
+        <span asp-validation-for="healthInsuranceNumber" class="text-danger"></span>
+    </div>
+     <div class="form-group">
+        <label for="NationalId">NationalId:</label>
+        <input asp-for="NationalID" type="number" class="form-control" />
+        <span asp-validation-for="NationalID" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="WorkingDays">Working Days:</label>
+        <div class="checkbox-list">
+            @foreach (string day in new string[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" })
+            {
+                <label>
+                    <input type="checkbox" name="hiddenWorkingDays" value="@day" @(Model?.WorkingDays?.Contains(day) ?? false) checked> @day
+                </label>
+            }
+        </div>
+        <input type="hidden" asp-for="WorkingDays">
+        
+    </div>
+    <div class="form-group">
+        <label for="StartTime">StartTime:</label>
+        <input asp-for="StartTime" type="time" class="form-control" />
+        <span asp-validation-for="StartTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="EndTime">EndTime:</label>
+        <input asp-for="EndTime" type="time" class="form-control" />
+        <span asp-validation-for="EndTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProfilePicture">Profile Picture:</label>
+        <input type="url" asp-for="ProfilePicture" class="form-control-file" />
+        @Html.ValidationMessageFor(model => model.ProfilePicture, "")
+    </div>
+    <button type="submit" asp-action="Create" class="btn btn-primary">Create Doctor</button>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

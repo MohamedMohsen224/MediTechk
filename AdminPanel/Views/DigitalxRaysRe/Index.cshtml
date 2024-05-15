@@ -1,0 +1,50 @@
+﻿@using Core.Models;
+@model IEnumerable<PreciptionDigitalxrays>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@{
+    ViewData["Title"] = "Digital X-Rays";
+}
+
+<h1>Digital X-Rays</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Prescription ID</th>
+            <th>Digitalxray ID</th>
+            <th>Digitalxray Name</th>
+            <th>Image</th>
+            <th>Status</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var digitalXray in Model)
+        {
+            <tr>
+                <td>@digitalXray.PrescriptionId</td>
+                <td>@digitalXray.DigitalXRayId</td>
+                <td>@digitalXray.DigitalXRay.Name</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(digitalXray.ImagePath))
+                    {
+                        <img src="@digitalXray.ImagePath" alt="Digital X-Ray" style="width: 100px; height: auto;" />
+                    }
+                    else
+                    {
+                        <span>No Image Available</span>
+                    }
+                </td>
+                <td>@digitalXray.Status</td>
+                <td>
+                    <a asp-action="SeedDigitalResult" asp-controller="DigitalxRaysRe" asp-route-PresciptionDigitalId="@digitalXray.Id" class="btn btn-primary">Update Result</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

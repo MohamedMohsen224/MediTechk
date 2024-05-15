@@ -1,0 +1,38 @@
+﻿@using MediTech.Dtos;
+@model GetDigitalXrayResult
+@{
+    ViewData["Title"] = "SeedDigitalResult";
+}
+
+<h1>SeedDigitalResult</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="prescriptionId">Prescription ID:</label>
+        <span id="prescriptionId">@Model.Presiptionid (Read-Only)</span>
+    </div>
+    <div class="form-group">
+        <label for="digitalXrayId">Digital X-Ray ID:</label>
+        <span id="digitalXrayId">@Model.DigitalXrayid (Read-Only)</span>
+    </div>
+    <div class="form-group">
+        <label for="digitalXrayName">Digital X-Ray Name:</label>
+        <span id="digitalXrayName">@Model.DigitalXrayName</span>
+    </div>
+
+    
+
+    <div class="form-group">
+        <label for="Status">Status:</label>
+        <input type="text" name="Status" id="Status" value="@Model.Status" class="form-control" />
+        @Html.ValidationMessageFor(m => m.Status, "")
+    </div>
+
+    <div class="form-group">
+        <label for="imageFile">Upload Image:</label>
+        <input type="file" name="imageFile" id="imageFile" accept="image/jpeg,image/png" class="form-control" />
+    </div>
+
+
+    <input type="submit" value="Seed" />
+</form>
