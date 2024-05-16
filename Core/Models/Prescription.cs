@@ -11,8 +11,7 @@ namespace Core.Models
     {
         public DateTime PrescriptionDate { get; set; } = DateTime.Now;
         public DateTime NextVisit { get; set; }
-        public string Illness { get; set; }
-        public string Description { get; set; }
+        public string IllnessDescription { get; set; }
 
        
 

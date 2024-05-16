@@ -118,8 +118,8 @@ namespace MediTech
                 await roleManager.CreateAsync(new IdentityRole("Patient"));
 
                 await SeedData.SeedAsync(dbcontext);
-                //var userManager = services.GetRequiredService<UserManager<AppUser>>();
-                //await SeedIdentityData.SeedUsersAsync(userManager, roleManager ,dbcontext);
+                var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                await SeedIdentityData.SeedUsersAsync(userManager, roleManager);
             }
             catch (Exception ex)
             {

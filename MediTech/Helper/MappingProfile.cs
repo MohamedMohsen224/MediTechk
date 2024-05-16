@@ -56,43 +56,57 @@ namespace MediTech.Helper
            .ForMember(d => d.PrescriptionId, opt => opt.MapFrom(d => d.Id))
            .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor.DisplayName))
            .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.UserName))
+           .ForMember(dest=>dest.IllnessDescription,opt=>opt.MapFrom(src=>src.IllnessDescription))
            .ForMember(dest => dest.Medications, opt => opt.MapFrom(src => src.Medications.Select(m => new PrescriptionMedicationDto
            {
                // Map medication details
-              
+               Id=m.MedicationId,
                Name = m.Medication.Medication_Name,
                Dose = m.Dose
 
            })))
            .ForMember(dest => dest.Tests, opt => opt.MapFrom(src => src.Tests.Select(t => new PrescriptionTestDto
            {
-              
+               Id = t.TestId,
                Name = t.Test.TestName, // Assuming Test has a TestName property
                Price = t.Test.TestPrice, // Assuming Test has a TestPrice property
            })))
            .ForMember(dest => dest.DigitalXRays, opt => opt.MapFrom(src => src.X_Rays.Select(x => new PrescriptionDigitalXRayDto
            {
-             
+               Id=x.DigitalXRayId,
                Name = x.DigitalXRay.Name, // Assuming DigitalXRay has a Name property
                Price = x.DigitalXRay.Price, // Assuming DigitalXRay has a Price property
            })));
-           
+
             #endregion
             #region CreatePrescription
             CreateMap<NewPresiptionDto, Prescription>()
             .ForMember(dest => dest.Medications, opt => opt.MapFrom(src => src.MedicationNames.Select(m => new PresiptionMedication
-           {
-            Medication = context.Medications.FirstOrDefault(med =>
-           med.Medication_Name == m.Name // Use MedicationName for mapping
+            {
+                Medication = context.Medications.FirstOrDefault(med =>
+               med.Medication_Name == m.Name 
+               
                    ),
-            Dose = m.Dose
+                Dose = m.Dose
             })))
-            .ForMember(dest => dest.Tests, opt => opt.MapFrom(src => src.TestNames.Select(t => new PresciptionTests { Test = context.Tests.FirstOrDefault(test => test.TestName == t) })))
-          .ForMember(dest => dest.X_Rays, opt => opt.MapFrom(src => src.DigitalXRayNames.Select(t => new PreciptionDigitalxrays { DigitalXRay = context.Digital_X_Rays.FirstOrDefault(test => test.Name == t) })))
+            .ForMember(dest => dest.Tests, opt => opt.MapFrom(src => src.TestNames.Select(m => new PresciptionTests
+            {
+                Test = context.Tests.FirstOrDefault(med =>
+               med.TestName == m.Name 
+                   ),
+                
+               
+            })))
+             .ForMember(dest => dest.X_Rays, opt => opt.MapFrom(src => src.DigitalXRayNames.Select(m => new PreciptionDigitalxrays
+             {
+                 DigitalXRay = context.Digital_X_Rays.FirstOrDefault(med =>
+                med.Name == m.Name 
+                   ),
+
+             })))
           .ForMember(dest => dest.PatientId, opt => opt.MapFrom(src => src.PatientId))
           .ForMember(dest => dest.DoctorId, opt => opt.MapFrom(src => src.DoctorId))
-          .ForMember(dest=>dest.Illness,opt=>opt.MapFrom(src=>src.Illness))
-          .ForMember(dest=>dest.Description,opt=>opt.MapFrom(src=>src.Description));
+          .ForMember(dest => dest.IllnessDescription, opt => opt.MapFrom(src => src.IllnessDescription));
            #endregion
             #region Test
             CreateMap<Tests, TestDto>()

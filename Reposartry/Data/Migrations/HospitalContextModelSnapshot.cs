@@ -556,14 +556,10 @@ namespace Reposatry.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Illness")
+                    b.Property<string>("IllnessDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

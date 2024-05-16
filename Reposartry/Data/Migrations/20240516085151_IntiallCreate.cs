@@ -456,8 +456,7 @@ namespace Reposatry.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PrescriptionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NextVisit = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Illness = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IllnessDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DoctorId = table.Column<int>(type: "int", nullable: false),
                     PatientId = table.Column<int>(type: "int", nullable: false)
                 },

@@ -15,8 +15,10 @@
       "connectionId": "ConnectionStrings:MediTechApi"
     },
     "mssql3": {
-      "ignored": "true",
-      "type": "mssql",
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/MediTech20240428213036/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsMyApi_D0FC181AFC",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/meditechdbserver/databases/MediTechdb_db",
+      "type": "mssql.azure",
       "connectionId": "ConnectionStrings:MyApi"
     }
   }

@@ -131,34 +131,7 @@ namespace AdminPanel.Controllers
             return day.ToString(); // Returns string representation of the enum value (e.g., "Monday")
         }
 
-        //public IActionResult Login()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> Login(LoginDto loginModel)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(loginModel);
-        //    }
-
-        //    var user = await _userManager.FindByEmailAsync(loginModel.Email);
-        //    if (user is null)
-        //    {
-        //        ModelState.AddModelError("", "Invalid Email or Password");
-        //        return View(loginModel);
-        //    }
-        //    var result = await signInManager.CheckPasswordSignInAsync(user, loginModel.Password, false);
-        //    if (!result.Succeeded || await _userManager.IsInRoleAsync(user,"Doctor"))
-        //    {
-
-
-        //    }
-
-
-        //}
+       
 
     }
 }

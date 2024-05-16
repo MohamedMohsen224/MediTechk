@@ -25,31 +25,25 @@ namespace Srevices
             {
                 throw new ArgumentException("Required fields missing in prescription data.");
             }
-            prescriptionDto.NextVisit=DateTime.Now.AddDays(15);
-            // 2. Create a new Prescription object
+
+            prescriptionDto.NextVisit = DateTime.Now.AddDays(15);
+
+            // 1. Create a new Prescription object  
             var prescription = new Prescription
             {
                 PrescriptionDate = DateTime.Now,
                 NextVisit = prescriptionDto.NextVisit,
                 DoctorId = prescriptionDto.DoctorId,
                 PatientId = prescriptionDto.PatientId,
-                Illness = prescriptionDto.Illness,
-                Description= prescriptionDto.Description,
+                IllnessDescription = prescriptionDto.IllnessDescription, // Assuming first diagnosis as description (optional)
             };
-           
 
-            
-
-          
-            var medicationIds = prescriptionDto.Medications?.Select(m => m.Medication.Medication_Name).ToList();
+            // 2. Medications
             if (prescriptionDto.Medications != null && prescriptionDto.Medications.Any())
             {
                 foreach (var medicationDto in prescriptionDto.Medications)
                 {
-                    // **Potential Issue:** Assuming `Medication` property exists 
-                    var medication = await context.Medications
-                        .Where(m => m.Medication_Name == medicationDto.Medication.Medication_Name)
-                        .FirstOrDefaultAsync();
+                    var medication = await context.Medications.FirstOrDefaultAsync(m => m.Medication_Name == medicationDto.Medication.Medication_Name); // Find by name
 
                     if (medication != null)
                     {
@@ -62,51 +56,51 @@ namespace Srevices
                 }
             }
 
-
+            // 3. Tests
             if (prescriptionDto.Tests != null && prescriptionDto.Tests.Any())
             {
-                var tests = await context.Tests
-                                          .Where(t => prescriptionDto.Tests.Select(dto => dto.Test.TestName).Contains(t.TestName))
-                                          .ToListAsync();
-
-                foreach (var test in tests)
+                foreach (var testDto in prescriptionDto.Tests)
                 {
-                    prescription.AddTest(test);
+                    var test = await context.Tests.FirstOrDefaultAsync(t => t.TestName == testDto.Test.TestName); // Find by name
+
+                    if (test != null)
+                    {
+                        prescription.Tests.Add(new PresciptionTests
+                        {
+                            TestId = test.Id,
+                            Test = test,
+                        });
+                    }
                 }
             }
 
+            // 4. Digital X-Rays
             if (prescriptionDto.X_Rays != null && prescriptionDto.X_Rays.Any())
             {
-                var xRayName = prescriptionDto.X_Rays.First().DigitalXRay.Name;
-
-                var digitalXRay = await context.Digital_X_Rays
-                                            .Where(x => x.Name == xRayName)
-                                            .FirstOrDefaultAsync();
-
-                if (digitalXRay != null)
+                foreach (var xRayDto in prescriptionDto.X_Rays)
                 {
-                    prescription.AddDigitalXRay(digitalXRay);
+                    var digitalXRay = await context.Digital_X_Rays.FirstOrDefaultAsync(x => x.Name == xRayDto.DigitalXRay.Name); // Find by name
+
+                    if (digitalXRay != null)
+                    {
+                        prescription.X_Rays.Add(new PreciptionDigitalxrays
+                        {
+                            DigitalXRayId=digitalXRay.Id,
+                            DigitalXRay = digitalXRay,
+                        });
+                    }
                 }
-                
             }
 
-
-            // 8. Save changes to the database
-
-
+            // 5. Save changes to the database
             await context.Prescriptions.AddAsync(prescription);
             await context.SaveChangesAsync();
 
-            // 8. Return the created prescription
+            // 6. Return the created prescription
             return prescription;
         }
 
-
-
-
-
-
-       // DeletePreciption
+        // DeletePreciption
         public async Task<bool> DeletePrescription(int prescriptionId)
         {
             // Find the prescription by ID

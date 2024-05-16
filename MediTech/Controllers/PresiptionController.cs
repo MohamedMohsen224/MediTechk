@@ -81,8 +81,7 @@ namespace MediTech.Controllers
                 NextVisit = p.NextVisit,
                 DoctorName = p.Doctor?.DisplayName,
                 PatientName= p.Patient?.UserName, 
-                Illness= p.Illness,
-                Description = p.Description,
+                IllnessDescription= p.IllnessDescription,
                 Medications = p.Medications?.Select(m => m.Medication != null ?
                     new PrescriptionMedicationDto
                     {
@@ -107,6 +106,18 @@ namespace MediTech.Controllers
              
 
             }).ToList();
+            //foreach (var prescription in mappedPrescriptions)
+            //{
+            //    if (!prescription.Tests.Any())
+            //    {
+            //        prescription.Tests = new List<PrescriptionTestDto>() { new PrescriptionTestDto { Message = "No Tests Ordered" } };
+            //    }
+
+            //    if (!prescription.DigitalXRays.Any())
+            //    {
+            //        prescription.DigitalXRays = new List<PrescriptionDigitalXRayDto>() { new PrescriptionDigitalXRayDto { Message = "No Digital X-Rays Ordered" } };
+            //    }
+            //}
 
             return Ok(mappedPrescriptions);
         }

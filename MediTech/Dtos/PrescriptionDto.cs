@@ -8,8 +8,8 @@ namespace MediTech.Dtos
         public DateTime PrescriptionDate { get; set; } = DateTime.Now;
         public string? DoctorName { get; set; }
         public string? PatientName { get; set; } 
-        public string? Illness { get; set; }
-        public string? Description { get; set; }
+        public string? IllnessDescription { get; set; }
+      
 
         public DateTime NextVisit { get; set; }
 
