@@ -31,27 +31,23 @@ namespace MediTech.Controllers
         [HttpGet("prescriptions/{doctorId}/{patientId}")]
         public async Task<ActionResult<IEnumerable<PrescriptionDto>>> GetPrescriptionsByDoctorAndPatient(int doctorId, int patientId)
         {
-            try
-            {
-                // Fetch prescriptions with doctor ID and patient ID
-                var prescriptions = await _preceptionServices.GetPrescriptionsByDoctorAndPatient(doctorId, patientId);
 
-                // Check if any prescriptions found
-                if (prescriptions == null || !prescriptions.Any())
-                {
-                    return NotFound("No prescriptions found for the given doctor and patient combination.");
-                }
+                    // Fetch prescriptions with doctor ID and patient ID
+                    var prescriptions = await _preceptionServices.GetPrescriptionsByDoctorAndPatient(doctorId, patientId);
 
-                // Map prescriptions to DTOs
-                var prescriptionDtos = _mapper.Map<IEnumerable<Prescription>, IEnumerable<PrescriptionDto>>(prescriptions);
+                    // Return an empty array if no prescriptions found (avoiding NotFound)
+                    if (prescriptions == null || !prescriptions.Any())
+                    {
+                        return Ok(Enumerable.Empty<PrescriptionDto>());
+                    }
 
-                return Ok(prescriptionDtos);
-            }
-            catch (Exception ex)
-            {
-                var errorMessage = string.Join(", ", ex.Message);
-                return BadRequest(new ApiErrorResponse(400, errorMessage));
-            }
+                    // Map prescriptions to DTOs
+                    var prescriptionDtos = _mapper.Map<IEnumerable<Prescription>, IEnumerable<PrescriptionDto>>(prescriptions);
+
+                    return Ok(prescriptionDtos);
+                
+              
+            
         }
 
         [HttpGet("prescriptions/{patientId}")]
@@ -160,7 +156,7 @@ namespace MediTech.Controllers
             }
             else
             {
-                return NotFound("Prescription not found");
+                return Ok(Enumerable.Empty<PrescriptionDto>());
             }
         }
 
