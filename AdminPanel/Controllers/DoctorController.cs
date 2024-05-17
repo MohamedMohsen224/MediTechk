@@ -37,7 +37,7 @@ namespace AdminPanel.Controllers
         [HttpGet]
         public async Task<ActionResult<Doctor>> Index()
         {
-            var doctors = await _context.Doctors.ToListAsync();
+            var doctors = await _context.Doctors.Include(pt=>pt.Clinic).ToListAsync();
             return View(doctors); 
         }
 
@@ -126,12 +126,34 @@ namespace AdminPanel.Controllers
                  return View(registerModel);
 
         }
-        public static string GetDayString(DayOfWeek day)
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            return day.ToString(); // Returns string representation of the enum value (e.g., "Monday")
+            // Find the doctor by ID
+            var doctor = await _context.Doctors.FindAsync(id);
+
+            // Check if doctor exists
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            // Additional checks can be added here, for example:
+            //  - Check if doctor has any appointments scheduled before deleting
+
+            // Remove doctor from context
+            _context.Doctors.Remove(doctor);
+
+            // Save changes to database
+            await _context.SaveChangesAsync();
+
+            // Return success message or redirect to appropriate location
+            return Ok("Doctor deleted successfully."); // Or RedirectToAction("Index")
         }
 
-       
+
 
     }
 }

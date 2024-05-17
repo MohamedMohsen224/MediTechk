@@ -20,5 +20,6 @@ namespace Core.Models
 
             public int? PrescriptionId { get; set; } 
             public DateTime AppointmentDateTime { get; set; }= DateTime.Now;
+            public DateTime? Expired { get; set; }    
         }
 }

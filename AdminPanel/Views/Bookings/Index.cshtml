@@ -1,0 +1,50 @@
+﻿@using Core.Models
+@model IEnumerable<Booking>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>AllBookings</h1>
+@if (Model.Count() != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Patient</th>
+                <th>Test</th>
+                <th>DigitalXray</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>
+                        @booking.BookingID
+                    </td>
+                    <td>
+                        @booking.AppointmentDateTime.ToString("yyyy-MM-dd")
+                    </td>
+                    <td>
+                        @booking.Patient?.UserName
+                    </td>
+                    <td>
+                        @booking.Test.TestName
+                    </td>
+                    <td>
+                        @booking.DigitalXRay.Name
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No Bookings found</p>
+}
+

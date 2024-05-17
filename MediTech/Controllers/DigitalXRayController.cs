@@ -150,7 +150,7 @@ namespace MediTech.Controllers
                         PatientName = b.Patient.UserName, // Assuming Patient has a Name property
                         DigitalXRayName = b.DigitalXRayId.HasValue ? b.DigitalXRay.Name : null,
                         PrescriptionId = b.PrescriptionId,
-                        DigitalXRayId = b.DigitalXRayId
+                        Expired = b.AppointmentDateTime.AddDays(2)
 
                     })
                     .ToList();

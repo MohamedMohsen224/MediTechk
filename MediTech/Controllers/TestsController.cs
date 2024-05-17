@@ -168,7 +168,7 @@ namespace MediTech.Controllers
             var bookings = await testServices.GetBookingsByPatientId(patientId);
             if (bookings != null)
             {
-                
+               
                 var testAppointments = bookings.Where(b => b.TestId.HasValue)
                     .Select(b => new BookingTestDto
                     {
@@ -177,7 +177,9 @@ namespace MediTech.Controllers
                         PatientName = b.Patient.UserName, // Assuming Patient has a Name property
                         TestName = b.Test.TestName,
                         PrescriptionId = b.PrescriptionId,
-                        AppointmentDateTime = b.AppointmentDateTime
+                        AppointmentDateTime = b.AppointmentDateTime,
+                        Expired = b.AppointmentDateTime.AddDays(2)
+
                     })
                     .ToList();
                 return Ok(testAppointments); // 200 OK response with test appointment DTOs

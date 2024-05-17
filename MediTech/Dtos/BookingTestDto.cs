@@ -8,5 +8,6 @@
         public DateTime AppointmentDateTime { get; set; }= DateTime.Now.AddDays(1);
         public string TestName{ get; set; } 
         public int? PrescriptionId { get; set; }
+        public DateTime Expired { get; set; }
     }
 }
