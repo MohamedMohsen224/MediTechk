@@ -1,11 +1,12 @@
 {
   "dependencies": {
-    "mssql2": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:MediTech"
-    },
     "apis1": {
       "type": "apis"
+    },
+    "mssql2": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:MediTech"
     },
     "mssql3": {
       "type": "mssql",

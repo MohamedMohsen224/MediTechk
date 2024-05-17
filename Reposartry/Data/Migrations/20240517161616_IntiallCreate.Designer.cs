@@ -12,7 +12,7 @@ using Reposatry.DAta;
 namespace Reposatry.Data.Migrations
 {
     [DbContext(typeof(HospitalContext))]
-    [Migration("20240516085151_IntiallCreate")]
+    [Migration("20240517161616_IntiallCreate")]
     partial class IntiallCreate
     {
         /// <inheritdoc />

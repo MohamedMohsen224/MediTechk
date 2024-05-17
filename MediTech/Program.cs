@@ -91,7 +91,7 @@ namespace MediTech
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                                      builder =>
                                                      {
-                                      builder.WithOrigins("http://127.0.0.1:5500");
+                                      builder.WithOrigins("http://localhost:3000");
                                                          builder.AllowAnyHeader();
                                                          builder.AllowAnyMethod();
                                                          builder.AllowAnyOrigin();

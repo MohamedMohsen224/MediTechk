@@ -151,7 +151,6 @@ namespace MediTech.Helper
                 .ForMember(d=>d.DigitalXRayName,opt=>opt.MapFrom(d=>d.DigitalXRay.Name))
                  .ForMember(d=>d.PatientName,opt=>opt.MapFrom(d=>d.Patient.UserName))
                 .ForMember(d => d.BookingID, opt => opt.MapFrom(d => d.BookingID))
-                .ForMember(d => d.DigitalXRayId, opt => opt.MapFrom(d => d.DigitalXRayId))
                 .ForMember(d => d.PatientId, opt => opt.MapFrom(d => d.PatientId))
                 .ForMember(d=>d.PrescriptionId,opt=>opt.MapFrom(d=>d.PrescriptionId));
             #endregion
@@ -169,7 +168,10 @@ namespace MediTech.Helper
           .ForMember(dt => dt.DoctorStartTime, opt => opt.MapFrom(d => d.Doctor.StartTime))
           .ForMember(dt => dt.DoctorEndTime, opt => opt.MapFrom(d => d.Doctor.EndTime))
           .ForMember(dt => dt.AppointmentNumber, opt => opt.MapFrom(d => d.AppointmentCount))
-          .ForMember(dt => dt.day, opt => opt.MapFrom(d => d.SelectedDay.ToString()));
+          .ForMember(dt => dt.day, opt => opt.MapFrom(d => d.SelectedDay.ToString()))
+          .ForMember(d=>d.Specialization,opt=>opt.MapFrom(d=>d.Doctor.Speachlization))
+          .ForMember(d=>d.ProfilePicture,opt=>opt.MapFrom(d=>d.Doctor.Profile_Picture));
+
             #endregion
             #region AppointmentDoctor
             CreateMap<Appointment, AppointmentFordoctor>()

@@ -4,7 +4,7 @@
   "parameters": {
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "MediTech20240427232344ResourceGroup",
+      "defaultValue": "MediTech20240517184700ResourceGroup",
       "metadata": {
         "_parameterType": "resourceGroup",
         "description": "Name of the resource group for the resource. It is recommended to put resources under same resource group for better tracking."
@@ -49,17 +49,17 @@
           "contentVersion": "1.0.0.0",
           "resources": [
             {
-              "name": "MediTechapi",
+              "name": "MediTechap",
               "type": "Microsoft.ApiManagement/service",
               "location": "[parameters('resourceLocation')]",
               "properties": {
-                "publisherEmail": "42020015@hti.edu.eg",
-                "publisherName": "42020015",
+                "publisherEmail": "42020006@hti.edu.eg",
+                "publisherName": "42020006",
                 "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
                 "hostnameConfigurations": [
                   {
                     "type": "Proxy",
-                    "hostName": "meditechapi.azure-api.net",
+                    "hostName": "meditechap.azure-api.net",
                     "encodedCertificate": null,
                     "keyVaultId": null,
                     "certificatePassword": null,
@@ -95,7 +95,7 @@
             },
             {
               "type": "Microsoft.ApiManagement/service/apis",
-              "name": "MediTechapi/MediTech",
+              "name": "MediTechap/MediTech",
               "properties": {
                 "displayName": "MediTech",
                 "apiRevision": "1",
@@ -118,7 +118,7 @@
               },
               "apiVersion": "2019-12-01",
               "dependsOn": [
-                "MediTechapi"
+                "MediTechap"
               ]
             }
           ]

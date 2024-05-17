@@ -122,5 +122,31 @@ namespace Srevices
                 .Include(b => b.Test)
                 .ToListAsync();
         }
+
+
+        public async Task CancelAppointment(int BookingId)
+        {
+            try
+            {
+                var booking = await context.Bookings.FindAsync(BookingId);
+
+                if (booking == null)
+                {
+                    throw new Exception("Booking not found.");
+                }
+
+
+
+                context.Bookings.Remove(booking);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to cancel appointment. Please try again later.");
+            }
+
+
+
+        }
     }
 }

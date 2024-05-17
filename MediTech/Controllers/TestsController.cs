@@ -190,6 +190,20 @@ namespace MediTech.Controllers
             }
         }
 
+        [HttpDelete("Booking/{bookingId}")]
+        public async Task<IActionResult> CancelAppointment(int bookingId)
+        {
+            try
+            {
+                await testServices.CancelAppointment(bookingId);
+                return Ok("Appointment cancelled successfully."); // 200 OK
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message); // 500 Internal Server Error
+            }
+        }
+
         
     }
 }

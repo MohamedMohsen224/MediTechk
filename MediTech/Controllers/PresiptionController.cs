@@ -28,7 +28,6 @@ namespace MediTech.Controllers
             _mapper = mapper;
             this.context = context;
         }
-        [Authorize(Roles = "Doctor")]
         [HttpGet("prescriptions/{doctorId}/{patientId}")]
         public async Task<ActionResult<IEnumerable<PrescriptionDto>>> GetPrescriptionsByDoctorAndPatient(int doctorId, int patientId)
         {
@@ -50,7 +49,6 @@ namespace MediTech.Controllers
               
             
         }
-        [Authorize(Roles="Patient")]
         [HttpGet("prescriptions/{patientId}")]
         public async Task<ActionResult<PrescriptionDto>> GetPrescriptionsByPatientId(int patientId)
         {
@@ -118,7 +116,6 @@ namespace MediTech.Controllers
 
             return Ok(mappedPrescriptions);
         }
-        [Authorize(Roles="Doctor")]
         [HttpPost("CreatePrescription")]
         
         public async Task<ActionResult<PrescriptionDto>> CreatePrescription([FromBody] NewPresiptionDto prescriptionDtoo)
@@ -147,7 +144,6 @@ namespace MediTech.Controllers
             }
         }
 
-        [Authorize(Roles="Doctor")]
         [HttpDelete]
         [Route("Deleteprescriptions/{prescriptionId}")]
         public async Task<IActionResult> DeletePrescription(int prescriptionId)

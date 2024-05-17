@@ -89,9 +89,6 @@ namespace Reposatry.Data.Migrations
                     b.Property<int?>("DigitalXRayId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Expired")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
 

@@ -21,5 +21,7 @@ namespace Core.Services
         public Task<Tests> DeleteTest(Tests tests);
 
         public Task<Booking> ScheduleTestAppointment(int testId, int patientId, int? PreciptionId);
+        public Task CancelAppointment(int BookingId);
+
     }
 }
