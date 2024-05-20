@@ -18,15 +18,21 @@ namespace MediTech.Dtos
         [Required(ErrorMessage ="Please Enter The Email")]
         [EmailAddress]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage ="PasswordIsRequired")]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "ConfirmPasswordIsRequired")]
+        public string confirmPassword { get; set; }
+
         [Required]
         public string Gender { get; set; }
         [Required(ErrorMessage = "Date of birth is required.")]
         public string DateOfBirth { get; set; }
-        [Required]
-        public int NationalID { get; set; }
-        public int? HealthInsuranceNumber { get; set; }
+
+        [Required(ErrorMessage = "National ID is required.")]
+        [RegularExpression(@"^\d{14}$", ErrorMessage = "National ID must be 14 digits.")]
+        public long NationalID { get; set; }
+        public long? HealthInsuranceNumber { get; set; }
         public string? HealthInsuranceCompany { get; set; }
 
        

@@ -9,6 +9,6 @@ namespace MediTech.Dtos
         [Required]
         public string SelectedDay { get; set; }
         [Required]
-        public int PatientId { get; set; } // Added patient ID
+        public int PatientId { get; set; } 
     }
 }

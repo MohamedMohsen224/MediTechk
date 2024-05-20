@@ -15,8 +15,8 @@ namespace Core.Models.Identity
          public string Gender { get; set; }
          public string DateOfBirth { get; set; }
          public string Address { get; set; }
-         public int NationalID { get; set; }
-         public int? healthInsuranceNumber { get; set; }
+         public long NationalID { get; set; }
+         public long? healthInsuranceNumber { get; set; }
          public string? HealthInsuranceCompany { get; set; }
          public Patient Patient { get; set; }
          public Doctor Doctor { get; set; }

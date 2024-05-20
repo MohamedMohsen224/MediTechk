@@ -98,6 +98,10 @@ namespace Srevices
             {
                 nextAppointmentNumber = existingAppointments.Max(a => a.AppointmentCount) + 1;
             }
+            var appointmentTime = await CalculateAppointmentTime(appointment.DoctorId, appointment.SelectedDay);
+
+            // Set the calculated appointment time
+            appointment.AppointmentTime = appointmentTime;
 
             appointment.AppointmentCount = nextAppointmentNumber;
             appointment.AppointmentDateTime = DateTime.UtcNow.Date.AddDays((int)workingDay);
@@ -167,10 +171,70 @@ namespace Srevices
 
         }
 
+        private async Task<TimeSpan> CalculateAppointmentTime(int? doctorId, string selectedDay)
+        {
 
+            
+             var doctor = await context.Doctors.FindAsync(doctorId);
+            if (doctor == null)
+            {
+                throw new ArgumentException("Doctor not found.");
+            }
+
+            // Parse the selected day
+            if (!Enum.TryParse<DayOfWeek>(selectedDay, true, out DayOfWeek workingDay))
+            {
+                throw new ArgumentException("Invalid day provided.");
+            }
+
+            // Check if the doctor works on the selected day
+            if (!doctor.WorkingDays.Contains(workingDay.ToString()))
+            {
+                throw new ArgumentException("Doctor is not available on the chosen day.");
+            }
+
+           
+
+            // Calculate the appointment duration
+            var appointmentDuration = TimeSpan.FromMinutes(30);
+
+            // Initialize the next appointment time as the doctor's start time
+            TimeSpan nextAppointmentTime = doctor.StartTime;
+
+            // Check if the current time exceeds the doctor's end time
+        
+
+            // Get existing appointments for the chosen day
+            var existingAppointments = await context.Appointments
+                .Where(a => a.DoctorId == doctorId && a.SelectedDay == selectedDay)
+                .OrderBy(a => a.AppointmentTime)
+                .ToListAsync();
+
+            // Find the first available time slot with a 30-minute gap
+            foreach (var existingAppointment in existingAppointments)
+            {
+                // Check if there's a gap of at least 30 minutes between appointments
+                if (existingAppointment.AppointmentTime - nextAppointmentTime >= appointmentDuration)
+                {
+                    return nextAppointmentTime;
+                }
+
+                // Move to the next available time slot by adding the appointment duration
+                nextAppointmentTime = existingAppointment.AppointmentTime + appointmentDuration;
+            }
+
+            // Check if the next appointment time exceeds the doctor's end time
+            if (nextAppointmentTime == doctor.EndTime)
+            {
+                throw new InvalidOperationException("No more available time slots for the chosen doctor and date.");
+            }
+
+            return nextAppointmentTime;
+        }
+        }
     }
 
-    }
+
 
 
 

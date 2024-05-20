@@ -9,8 +9,7 @@ namespace MediTech.Dtos
         public string? DoctorName { get; set; }
         public string? PatientName { get; set; } 
         public string? IllnessDescription { get; set; }
-      
-
+        public string ClinicName { get; set; }
         public DateTime NextVisit { get; set; }
 
 

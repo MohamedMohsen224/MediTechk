@@ -61,10 +61,10 @@ namespace MediTech.Controllers
                 return Unauthorized(new ApiErrorResponse(401 , "Email or password is incorrect"));
             }
 
-            if(model.Password == null)
-            {
-                return Unauthorized(new ApiErrorResponse(401,  "Password is required"));
-            }
+            //if(model.Password == null)
+            //{
+            //    return Unauthorized(new ApiErrorResponse(401,  "Password is required"));
+            //}
 
             var result = await SignInManager.CheckPasswordSignInAsync(user, model.Password, false);
             if (!result.Succeeded )
@@ -159,6 +159,10 @@ namespace MediTech.Controllers
             if (existingUser != null)
             {
                 return BadRequest(new ApiErrorResponse(400 , "Email address already in use"));
+            }
+            if (model.Password != model.confirmPassword)
+            {
+                return BadRequest(new ApiErrorResponse(400, "ConfirmPassword must Match the Password"));
             }
 
             var user = new AppUser()

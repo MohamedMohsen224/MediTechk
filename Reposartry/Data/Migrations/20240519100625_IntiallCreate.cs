@@ -366,6 +366,7 @@ namespace Reposatry.Data.Migrations
                     DoctorId = table.Column<int>(type: "int", nullable: true),
                     PatientId = table.Column<int>(type: "int", nullable: true),
                     AppointmentDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AppointmentTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     AppointmentCount = table.Column<int>(type: "int", nullable: false),
                     SelectedDay = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ClinicId = table.Column<int>(type: "int", nullable: true)

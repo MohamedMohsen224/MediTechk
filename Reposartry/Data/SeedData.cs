@@ -158,7 +158,7 @@ namespace Reposatry.Data
                 {
                     new Clinic
                     {
-                        Clinic_Name= "Chest and respiratory diseases",
+                        Clinic_Name= "Dentistry",
                         Clinic_Location= "F1",
                         Clinic_Phone= "555-1234",
 
@@ -166,7 +166,7 @@ namespace Reposatry.Data
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Urology and andrology surgery",
+                        Clinic_Name= "Surgery",
                         Clinic_Location= "F1",
                         Clinic_Phone= "555-1234",
 
@@ -174,7 +174,7 @@ namespace Reposatry.Data
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Subconscious",
+                        Clinic_Name= "Orthopedic",
                         Clinic_Location= "F1",
                         Clinic_Phone= "555-1234",
 
@@ -182,138 +182,123 @@ namespace Reposatry.Data
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Gynecology and childbirth",
+                        Clinic_Name= "Dermatology",
                         Clinic_Location= "F2",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 250
+                        AmoutForBook= 150
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Dental clinic",
+                        Clinic_Name= "Cardiology",
                         Clinic_Location= "F2",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 300
+                        AmoutForBook= 150
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Bones",
+                        Clinic_Name= "Hematology",
                         Clinic_Location= "F3",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 350
+                        AmoutForBook= 150
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Pediatric surgery",
+                        Clinic_Name= "Nephrology",
                         Clinic_Location= "F3",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 400
+                        AmoutForBook= 200
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Dermatology and Venereology",
+                        Clinic_Name= "Oncology",
                         Clinic_Location= "F3",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 450
+                        AmoutForBook= 150
                     },
                     new Clinic
                     {
-                        Clinic_Name= "General Surgery",
+                        Clinic_Name= "Rheumatology",
                         Clinic_Location= "F4",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 500
+                        AmoutForBook= 100
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Nutrition and obesity surgeries",
+                        Clinic_Name= "Pediatric",
                         Clinic_Location= "F4",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 550
+                        AmoutForBook= 100
                     },
                     new Clinic
                     {
-                        Clinic_Name= "brain and nerves",
+                        Clinic_Name= "Obstetrics & Gynecology",
                         Clinic_Location= "F5",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 600
+                        AmoutForBook= 150
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Blood vessels",
+                        Clinic_Name= "Neurology",
                         Clinic_Location= "F5",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 650
+                        AmoutForBook= 100
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Blood diseases",
+                        Clinic_Name= "Ear , Nose & Throat ( E N T)",
                         Clinic_Location= "F5",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 700
+                        AmoutForBook= 100
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Heart and echo",
+                        Clinic_Name= "Urology",
                         Clinic_Location= "F6",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 750
+                        AmoutForBook= 150
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Oncology surgery",
+                        Clinic_Name= "Hepatology",
                         Clinic_Location= "F6",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 800
+                        AmoutForBook= 150
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Psychological and neurological",
+                        Clinic_Name= "Psychiatry",
                         Clinic_Location= "F6",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 850
+                        AmoutForBook= 150
                     },
                     new Clinic
                     {
-                        Clinic_Name= "Knee roughness",
+                        Clinic_Name= "Anatomy",
                         Clinic_Location= "F7",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 900
+                        AmoutForBook= 200
                     },
                     new Clinic
                     {
-                        Clinic_Name= "natural therapy",
+                        Clinic_Name= "Forensic Medicine",
                         Clinic_Location= "F7",
                         Clinic_Phone= "555-1234",
 
-                        AmoutForBook= 950
-                    },
-                    new Clinic
-                    {
-                        Clinic_Name= "Endocrine glands and sugar",
-                        Clinic_Location= "F7",
-                        Clinic_Phone= "555-1234",
-
-                        AmoutForBook= 1000
-                    },
-                    new Clinic
-                    {
-                        Clinic_Name= "Ear, nose and throat",
-                        Clinic_Location= "F8",
-                        Clinic_Phone= "555-1234",
-                        AmoutForBook= 1050
+                        AmoutForBook= 200
                     },
 
                 };
@@ -1321,117 +1306,117 @@ namespace Reposatry.Data
                     new Digital_x_rays
                     {
                         Name = "Ankle X-Ray",
-                        Price = 550
+                        Price = 250
                     },
                     new Digital_x_rays
                     {
                         Name = "Foot X-Ray",
-                        Price = 600
+                        Price = 300
                     },
                     new Digital_x_rays
                     {
                         Name = "Hand X-Ray",
-                        Price = 650
+                        Price = 350
                     },
                     new Digital_x_rays
                     {
                         Name = "Neck X-Ray",
-                        Price = 700
+                        Price = 300
                     },
                     new Digital_x_rays
                     {
                         Name = "Leg X-Ray",
-                        Price = 750
+                        Price = 700
                     },
                     new Digital_x_rays
                     {
                         Name = "Arm X-Ray",
-                        Price = 800
+                        Price = 650
                     },
                     new Digital_x_rays
                     {
                         Name = "Hip X-Ray",
-                        Price = 850
+                        Price = 450
                     },
                     new Digital_x_rays
                     {
                         Name = "Thigh X-Ray",
-                        Price = 900
+                        Price = 500
                     },
                     new Digital_x_rays
                     {
                         Name = "Forearm X-Ray",
-                        Price = 950
+                        Price = 550
                     },
                     new Digital_x_rays
                     {
                         Name = "Calf X-Ray",
-                        Price = 1000
+                        Price = 350
                     },
                     new Digital_x_rays
                     {
                         Name = "Forehead X-Ray",
-                        Price = 1050
+                        Price = 475
                     },
                     new Digital_x_rays
                     {
                         Name = "Jaw X-Ray",
-                        Price = 1100
+                        Price = 375
                     },
                     new Digital_x_rays
                     {
                         Name = "Chest X-Ray",
-                        Price = 1150
+                        Price = 350
                     },
                     new Digital_x_rays
                     {
                         Name = "Abdominal X-Ray",
-                        Price = 1200
+                        Price = 450
                     },
                     new Digital_x_rays
                     {
                         Name = "Pelvic X-Ray",
-                        Price = 1250
+                        Price = 350
                     },
                     new Digital_x_rays
                     {
                         Name = "Spinal X-Ray",
-                        Price = 1300
+                        Price = 350
                     },
                     new Digital_x_rays
                     {
                         Name = "Skull X-Ray",
-                        Price = 1350
+                        Price = 700
                     },
                     new Digital_x_rays
                     {
                         Name = "Knee X-Ray",
-                        Price = 1400
+                        Price = 600
                     },
                     new Digital_x_rays
                     {
                         Name = "Shoulder X-Ray",
-                        Price = 1450
+                        Price = 650
                     },
                     new Digital_x_rays
                     {
                         Name = "Elbow X-Ray",
-                        Price = 1500
+                        Price = 750
                     },
                     new Digital_x_rays
                     {
                         Name = "Wrist X-Ray",
-                        Price = 1550
+                        Price = 850
                     },
                     new Digital_x_rays
                     {
                         Name = "Ankle X-Ray",
-                        Price = 1600
+                        Price = 800
                     },
                     new Digital_x_rays
                     {
                         Name = "Foot X-Ray",
-                        Price = 1650
+                        Price = 950
                     },
 
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Reposatry.DAta;
 
@@ -11,9 +12,11 @@ using Reposatry.DAta;
 namespace Reposatry.Data.Migrations
 {
     [DbContext(typeof(HospitalContext))]
-    partial class HospitalContextModelSnapshot : ModelSnapshot
+    [Migration("20240519100625_IntiallCreate")]
+    partial class IntiallCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -227,8 +230,8 @@ namespace Reposatry.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("NationalID")
-                        .HasColumnType("bigint");
+                    b.Property<int>("NationalID")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -251,8 +254,8 @@ namespace Reposatry.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("healthInsuranceId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("healthInsuranceId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -302,8 +305,8 @@ namespace Reposatry.Data.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<long>("NationalID")
-                        .HasColumnType("bigint");
+                    b.Property<int>("NationalID")
+                        .HasColumnType("int");
 
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(max)");
@@ -332,8 +335,8 @@ namespace Reposatry.Data.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("healthInsuranceNumber")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("healthInsuranceNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -460,8 +463,8 @@ namespace Reposatry.Data.Migrations
                     b.Property<string>("HealthInsuranceCompany")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("NationalID")
-                        .HasColumnType("bigint");
+                    b.Property<int>("NationalID")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -478,8 +481,8 @@ namespace Reposatry.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<long?>("healthInsuranceNumber")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("healthInsuranceNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

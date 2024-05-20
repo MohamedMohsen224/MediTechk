@@ -3,6 +3,7 @@ using Core.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,10 @@ namespace Core.Models
         public string DateOfBirth { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public int NationalID { get; set; }
-        public int? healthInsuranceNumber { get; set; }
+
+       
+        public long NationalID { get; set; }
+        public long? healthInsuranceNumber { get; set; }
         public string? HealthInsuranceCompany { get; set; }
         public string PhoneNumber { get; set; }
 

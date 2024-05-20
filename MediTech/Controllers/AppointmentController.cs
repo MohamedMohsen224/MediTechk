@@ -29,15 +29,16 @@ namespace MediTech.Controllers
         {
             try
             {
-                var appointments = new Appointment
-               {
-                   DoctorId = dto.DoctorId,
-                   PatientId = dto.PatientId, 
-                   SelectedDay = dto.SelectedDay
+                var appointment = new Appointment
+                {
+                    DoctorId = dto.DoctorId,
+                    PatientId = dto.PatientId,
+                    SelectedDay = dto.SelectedDay
+                };
 
-               };
-                var appointment = await appointmentServices.CreateAppointment(appointments);
-                return Ok("Appointment created successfully!"); // Simple success message
+
+                var createdAppointment = await appointmentServices.CreateAppointment(appointment);
+                return Ok($"Appointment created successfully! Appointment Time: {appointment.AppointmentTime}"); // Consider including relevant appointment details
             }
             catch (ArgumentException ex)
             {

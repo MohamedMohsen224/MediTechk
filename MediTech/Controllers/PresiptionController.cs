@@ -61,6 +61,7 @@ namespace MediTech.Controllers
                                               .ThenInclude(t => t.Test)
                                               .Include(p=>p.Patient)
                                               .Include(p=>p.Doctor)
+                                              .ThenInclude(d=>d.Clinic)
                                               .Where(p => p.PatientId == patientId)
                                               .ToListAsync();
 
@@ -76,6 +77,7 @@ namespace MediTech.Controllers
                 NextVisit = p.NextVisit,
                 DoctorName = p.Doctor?.DisplayName,
                 PatientName= p.Patient?.UserName, 
+                ClinicName = p.Doctor.Clinic.Clinic_Name,
                 IllnessDescription= p.IllnessDescription,
                 Medications = p.Medications?.Select(m => m.Medication != null ?
                     new PrescriptionMedicationDto

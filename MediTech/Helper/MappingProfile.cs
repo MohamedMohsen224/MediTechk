@@ -57,6 +57,7 @@ namespace MediTech.Helper
            .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor.DisplayName))
            .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.UserName))
            .ForMember(dest=>dest.IllnessDescription,opt=>opt.MapFrom(src=>src.IllnessDescription))
+           .ForMember(dest => dest.ClinicName, opt => opt.MapFrom(src => src.Doctor.Clinic.Clinic_Name))
            .ForMember(dest => dest.Medications, opt => opt.MapFrom(src => src.Medications.Select(m => new PrescriptionMedicationDto
            {
                // Map medication details
