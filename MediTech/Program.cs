@@ -81,7 +81,6 @@ namespace MediTech
                       IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]))
                   };
               });
-            builder.Services.AddTransient<IMailSetting, EmailSettings>();
             
             #endregion
 

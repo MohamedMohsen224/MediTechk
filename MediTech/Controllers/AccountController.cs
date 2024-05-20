@@ -25,21 +25,18 @@ namespace MediTech.Controllers
         private readonly UserManager<AppUser> userManager;
         private readonly IAuthServices authService;
         private readonly HospitalContext context;
-        private readonly IMailSetting mailSetting;
         public SignInManager<AppUser> SignInManager;
         public AccountController(
            UserManager<AppUser> userManager,
            SignInManager<AppUser> signInManager,
            IAuthServices authService,
-           HospitalContext context,
-           IMailSetting mailSetting
+           HospitalContext context
            )
         {
             this.userManager = userManager;
             SignInManager = signInManager;
             this.authService = authService;
             this.context = context;
-            this.mailSetting = mailSetting;
         }
 
         //============================================================================================

@@ -53,18 +53,35 @@ namespace MediTech.Controllers
 
         }
 
-       
-       
+
+        [HttpPut("patients/{id}")]
+        public async Task<IActionResult> UpdatePatient(int id, [FromBody] PatientDto updatedPatientData)
+        {
+            try
+            {
+                var mappedPatient = mapper.Map<PatientDto, Patient>(updatedPatientData);
+                var updatedPatient = await patientService.UpdatePatientDataAsync(id, mappedPatient);
+                var mappedUpdatedPatient = mapper.Map<Patient, PatientDto>(updatedPatient);
+                return Ok(mappedUpdatedPatient);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
 
-
-
-
-
-
-
-
-
-
-    } 
+    }
 }

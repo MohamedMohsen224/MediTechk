@@ -15,7 +15,7 @@ namespace Core.Services
 
         Task<Patient> GetPatientByIdAsync(int Patientid);
 
-
+        public Task<Patient> UpdatePatientDataAsync(int patientId, Patient updatedPatientData);
 
 
     }

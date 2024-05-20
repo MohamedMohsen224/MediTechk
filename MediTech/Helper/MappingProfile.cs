@@ -49,7 +49,8 @@ namespace MediTech.Helper
             .ForMember(d => d.Telephone, opt => opt.MapFrom(d => d.PhoneNumber))
             .ForMember(d => d.DateOfBirth, opt => opt.MapFrom(d => d.DateOfBirth))
             .ForMember(d => d.Email, opt => opt.MapFrom(d => d.Email))
-            .ForMember(d => d.NationalId, opt => opt.MapFrom(d => d.NationalID));
+            .ForMember(d => d.NationalId, opt => opt.MapFrom(d => d.NationalID))
+            .ReverseMap();
             #endregion
             #region Prescription
             CreateMap<Prescription, PrescriptionDto>()
