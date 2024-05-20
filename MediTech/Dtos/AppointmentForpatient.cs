@@ -8,7 +8,7 @@
         public string Doctor { get; set; }
         public string   day { get; set; }
         public string Specialization { get; set; }
-
+        public TimeSpan AppointmentTime { get; set; }
         public string ProfilePicture { get; set; }
         public TimeSpan DoctorStartTime { get; set; } 
         public TimeSpan DoctorEndTime { get; set; }

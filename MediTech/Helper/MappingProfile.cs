@@ -171,7 +171,8 @@ namespace MediTech.Helper
           .ForMember(dt => dt.AppointmentNumber, opt => opt.MapFrom(d => d.AppointmentCount))
           .ForMember(dt => dt.day, opt => opt.MapFrom(d => d.SelectedDay.ToString()))
           .ForMember(d=>d.Specialization,opt=>opt.MapFrom(d=>d.Doctor.Speachlization))
-          .ForMember(d=>d.ProfilePicture,opt=>opt.MapFrom(d=>d.Doctor.Profile_Picture));
+          .ForMember(d=>d.ProfilePicture,opt=>opt.MapFrom(d=>d.Doctor.Profile_Picture))
+          .ForMember(d=>d.AppointmentTime,opt=>opt.MapFrom(d=>d.AppointmentTime));
 
             #endregion
             #region AppointmentDoctor

@@ -13,7 +13,7 @@ namespace MediTech.Dtos
         public string Telephone { get; set; }
         public string Gender { get; set; }
         public string DateOfBirth { get; set; }
-        public int NationalId { get; set; }
+        public long NationalId { get; set; }
         
 
     }

@@ -38,7 +38,7 @@ namespace MediTech.Controllers
 
 
                 var createdAppointment = await appointmentServices.CreateAppointment(appointment);
-                return Ok($"Appointment created successfully! Appointment Time: {appointment.AppointmentTime}"); // Consider including relevant appointment details
+                return Ok(appointment.AppointmentTime); 
             }
             catch (ArgumentException ex)
             {
