@@ -4,20 +4,18 @@ using Reposatry.DAta;
 
 namespace AdminPanel.Controllers
 {
-    public class BookingsController : Controller
+    public class AllPatientsController : Controller
     {
         private readonly HospitalContext context;
 
-        public BookingsController(HospitalContext context)
+        public AllPatientsController(HospitalContext context)
         {
             this.context = context;
         }
         public async Task<IActionResult> Index()
         {
-            var bookings = await context.Bookings.Include(pt=>pt.Patient).Include(pt=>pt.Test).Include(d=>d.DigitalXRay).ToListAsync();
-            return View(bookings);
-            
+            var patients = await context.Patients.ToListAsync();
+            return View(patients);
         }
-     
     }
 }

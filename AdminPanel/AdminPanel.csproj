@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Files\**" />
+    <Content Remove="wwwroot\Files\**" />
+    <EmbeddedResource Remove="wwwroot\Files\**" />
+    <None Remove="wwwroot\Files\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
@@ -17,10 +24,6 @@
     <ProjectReference Include="..\MediTech\MediTech.csproj" />
     <ProjectReference Include="..\Reposartry\Reposatry.csproj" />
     <ProjectReference Include="..\Srevices\Srevices.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\Files\Images\" />
   </ItemGroup>
 
 </Project>

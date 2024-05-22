@@ -6,6 +6,7 @@
 }
 
 <h1>Appointments</h1>
+<hr />
 @if (Model.Count() != null)
 {
     <table class="table">
@@ -16,6 +17,7 @@
                 <th>Patient</th>
                 <th>Doctor</th>
                 <th>SelectedDay</th>
+                <th>Time</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +38,9 @@
                     </td>
                     <td>
                         @appointment.SelectedDay
+                    </td>
+                    <td>
+                        @appointment.AppointmentTime
                     </td>
                     
                 </tr>

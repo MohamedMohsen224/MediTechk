@@ -1,29 +1,23 @@
 ﻿@using Core.Models
-@model IEnumerable<Doctor>
+@model IEnumerable<Patient>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Doctors</h1>
-<a href="@Url.Action("Create", "Doctor")" class="btn btn-primary">Register Doctor</a>
-
-
-
-<hr />
-
+<h1>Patients</h1>
+<hr/>
 @if (Model.Count() > 0)
 {
     <div class="container">
         <table class="table table-hover table-striped table-bordered">
             <thead>
-                <tr >
-                    <th>@Html.DisplayNameFor(u => u.DisplayName)</th>
+                <tr>
+                    <th>@Html.DisplayNameFor(u => u.UserName)</th>
                     <th>@Html.DisplayNameFor(u => u.Email)</th>
                     <th>@Html.DisplayNameFor(u => u.Address)</th>
-                    <th>@Html.DisplayNameFor(u => u.Speachlization)</th>
                     <th>@Html.DisplayNameFor(u => u.DateOfBirth)</th>
                     <th>@Html.DisplayNameFor(u => u.PhoneNumber)</th>
-                    <th>@Html.DisplayNameFor(u => u.Clinic)</th>
+                    <th>@Html.DisplayNameFor(u => u.NationalID)</th>
                 </tr>
             </thead>
 
@@ -31,18 +25,20 @@
                 @foreach (var user in Model)
                 {
                     <tr>
-                       
-                        <td>@user.DisplayName</td>
+                        <td>@user.UserName</td>
                         <td>@user.Email</td>
                         <td>@user.Address</td>
-                        <td>@user.Speachlization</td>
                         <td>@user.DateOfBirth</td>
                         <td>@user.PhoneNumber</td>
-                        <td>@user.Clinic.Clinic_Name</td>
+                        <td>@user.NationalID</td>
                     </tr>
                 }
             </tbody>
+
+
+
         </table>
+
     </div>
 
 }

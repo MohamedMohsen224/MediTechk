@@ -4,7 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>AllBookings</h1>
+<h1>Bookings</h1>
+<hr />
 @if (Model.Count() != null)
 {
     <table class="table">
@@ -32,10 +33,10 @@
                         @booking.Patient?.UserName
                     </td>
                     <td>
-                        @booking.Test.TestName
+                        @booking.Test?.TestName
                     </td>
                     <td>
-                        @booking.DigitalXRay.Name
+                        @booking.DigitalXRay?.Name
                     </td>
 
                 </tr>

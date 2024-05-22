@@ -131,6 +131,7 @@ namespace Srevices
                 .ThenInclude(x => x.DigitalXRay)
                 .Include(d=>d.Patient)
                 .Include(d=>d.Doctor)
+                .ThenInclude(d=>d.Clinic)
                 .ToListAsync();
         }
     }
